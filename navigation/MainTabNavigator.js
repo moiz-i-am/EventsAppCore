@@ -2,8 +2,7 @@ import React from 'react';
 import { Platform } from 'react-native';
 import { createStackNavigator} from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
-
-//import TabBarIcon from '../components/TabBarIcon';
+import TabBarIcon from '../components/TabBarIcon';
 import DiscoverScreen from '../screens/DiscoverScreen';
 import ProfileScreen from '../screens/ProfileScreen';
 import SettingsScreen from '../screens/SettingsScreen';
@@ -24,16 +23,16 @@ const DiscoverStack = createStackNavigator(
 
 DiscoverStack.navigationOptions = {
   tabBarLabel: 'Discover',
-  //tabBarIcon: ({ focused }) => (
-    // <TabBarIcon
-    //   focused={focused}
-    //   name={
-    //     Platform.OS === 'ios'
-    //       ? `ios-information-circle${focused ? '' : '-outline'}`
-    //       : 'md-information-circle'
-    //   }
-    // />
-  //),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+          ? `ios-information-circle${focused ? '' : '-outline'}`
+          : 'md-information-circle'
+      }
+    />
+  ),
 };
 
 DiscoverStack.path = '';
@@ -47,9 +46,9 @@ const ProfileStack = createStackNavigator(
 
 ProfileStack.navigationOptions = {
   tabBarLabel: 'Profile',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'} />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-person' : 'md-person'} />
+  ),
 };
 
 ProfileStack.path = '';
@@ -63,9 +62,9 @@ const SettingsStack = createStackNavigator(
 
 SettingsStack.navigationOptions = {
   tabBarLabel: 'Settings',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'} />
+  ),
 };
 
 SettingsStack.path = '';
@@ -80,9 +79,9 @@ const MapStack = createStackNavigator(
 
 MapStack.navigationOptions = {
   tabBarLabel: 'Map',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-map' : 'md-map'} />
+  ),
 };
 
 MapStack.path = '';
@@ -96,9 +95,9 @@ const CalanderStack = createStackNavigator(
 
 CalanderStack.navigationOptions = {
   tabBarLabel: 'Calander',
-  // tabBarIcon: ({ focused }) => (
-  //   <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-calendar' : 'md-calendar'} />
-  // ),
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon focused={focused} name={Platform.OS === 'ios' ? 'ios-calendar' : 'md-calendar'} />
+  ),
 };
 
 CalanderStack.path = '';
