@@ -1,6 +1,6 @@
 import React from 'react';
 import {StyleSheet,View,Text} from 'react-native'
-//import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
+import MapView,{PROVIDER_GOOGLE} from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 
 const styles = StyleSheet.create({
  container: {
@@ -8,15 +8,14 @@ const styles = StyleSheet.create({
    justifyContent: 'flex-end',
    alignItems: 'center',
  },
-//  map: {
-//    ...StyleSheet.absoluteFillObject,
-//  },
+ map: {
+   ...StyleSheet.absoluteFillObject,
+ },
 });
 
 export default Maps = () => (
    <View style={styles.container}>
-     <Text>map</Text>
-     {/* <MapView
+     <MapView
        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
        style={styles.map}
        region={{
@@ -26,7 +25,7 @@ export default Maps = () => (
          longitudeDelta: 0.0121,
        }}
      >
-     </MapView> */}
+     </MapView>
    </View>
 );
 
