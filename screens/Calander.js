@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
 import {
-    View,Text
+    View
   } from 'react-native';
 //   import moment from 'moment';
-// import CalendarStrip from 'react-native-calendar-strip';
+import CalendarStrip from 'react-native-calendar-strip';
 
 
 export default class Calander extends Component {
       render() {
         return (
       <View>
-        <Text>hello</Text>
-        {/* <CalendarStrip
+        <CalendarStrip
           calendarAnimation={{ type: 'sequence', duration: 30 }}
           daySelectionAnimation={{
             type: 'border',
@@ -29,7 +28,7 @@ export default class Calander extends Component {
           disabledDateNameStyle={{ color: 'grey' }}
           disabledDateNumberStyle={{ color: 'grey' }}
           iconContainer={{ flex: 0.1 }}
-        /> */}
+        />
       </View>
         );
       }

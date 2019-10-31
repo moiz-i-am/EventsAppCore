@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
 
 export default Maps = () => (
    <View style={styles.container}>
+     <Text>map</Text>
      {/* <MapView
        provider={PROVIDER_GOOGLE} // remove if not using Google Maps
        style={styles.map}
@@ -26,7 +27,6 @@ export default Maps = () => (
        }}
      >
      </MapView> */}
-     <Text>hello</Text>
    </View>
 );
 
