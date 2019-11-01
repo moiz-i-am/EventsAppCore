@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import {Button,InteractionManager,View,Text,StyleSheet} from 'react-native';
 import * as firebaseAPI from './../firebaseAuths/firebaseAPI';
 import { NavigationEvents } from 'react-navigation';
+import firebase from 'firebase';
 
 
 
@@ -16,6 +17,17 @@ export default class SettingsScreen extends Component {
     })
   }
 
+  onDelButtonPress(navigation) {
+    firebase.auth().currentUser.delete().then(function () {
+      InteractionManager.runAfterInteractions(() => {
+        navigation.navigate('Login')
+    })
+    }).catch(function (error) {
+      console.error({error})
+    })
+    
+  }
+
   /**
    * Go ahead and delete ExpoConfigView and replace it with your content;
    * we just wanted to give you a quick view of your config.
@@ -24,7 +36,7 @@ export default class SettingsScreen extends Component {
   return(
     <View>
       <Text style={styles.button} onPress={()=>alert("button pressed")}>Edit Info</Text>
-      <Text style={styles.button} onPress={()=>alert("button pressed")}>Delete Account</Text>
+      <Text style={styles.button} onPress={() => { this.onDelButtonPress(this.props.navigation) }}>Delete Account</Text>
       <Text style={styles.buttonLogout} onPress={() => { this.logout(this.props.navigation) }}>Logout</Text>
     </View>
   );

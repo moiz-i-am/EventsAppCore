@@ -49,21 +49,17 @@ export default class Login extends Component {
     this.setState({ error: '', loading: true })
     const { email, password } = this.state;
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then(this.onLoginSuccess.bind(this))
-      .catch(() => {
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-          .then(this.onLoginSuccess.bind(this))
-          .catch((error) => {
-            let errorCode = error.code
-            let errorMessage = error.message;
-            if (errorCode == 'auth/weak-password') {
-              this.onLoginFailure.bind(this)('Weak password!')
-            } else {
-              this.onLoginFailure.bind(this)(errorMessage)
-            }
-          });
-      });
-      this.props.navigation.navigate(<MainTabNavigator/>)
+    .catch(function(error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    if (errorCode === 'auth/wrong-password') {
+        alert('Wrong password.');
+    } else {
+        alert(errorMessage);
+    }
+    console.log(error);
+    });
   }
   onLoginSuccess() {
     this.setState({
