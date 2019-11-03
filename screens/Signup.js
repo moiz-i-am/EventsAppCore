@@ -6,8 +6,7 @@ import {
   TextInput,
 } from 'react-native';
 import firebase from 'firebase';
-import * as firebaseAPI from '../firebaseAuths/firebaseAPI';
-import MainTabNavigator from './../navigation/MainTabNavigator';
+
 
 export default class Signup extends Component {
 
@@ -31,26 +30,50 @@ export default class Signup extends Component {
   // }
 
   validateEmail = (email) => {
-    var re = /.+@(mit)\.edu$/;
-      return re.test(email);
+    var re = /.+@(gmail)\.com$/;
+    return re.test(email);
   };
 
+  componentDidMount() {
+    this.watchAuthState(this.props.navigation)
+  }
+
+  watchAuthState(navigation) {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user != undefined) {
+        navigation.navigate('VerifyEmail');
+      }
+    });
+  }
+
+
   submit() {
+   
     if (this.state.email != '') {
       //Check for the Name TextInput
       if (this.state.password != '') {
-      if (!this.validateEmail(this.state.email)) {
-        alert("Please use email with mit domain");
+        if (!this.validateEmail(this.state.email)) {
+          alert("Please use email with mit domain");
+        } else {
+          const promise = firebase.auth().createUserWithEmailAndPassword(this.state.email, this.state.password);
+          promise.then(function (user) {// You are forgetting this reference.
+            // You can also call this.
+            firebase.auth().currentUser.sendEmailVerification();
+            
+          }).catch(function (error) {
+            alert('user already exists')
+          });
+          
+        }
       } else {
-        firebaseAPI.createUser(this.state.email, this.state.password)
-        this.props.navigation.navigate(<MainTabNavigator/>)
+        alert('Please Enter Email');
       }
     } else {
-      alert('Please Enter Email');
+      alert('Please Enter Name');
     }
-  } else {
-    alert('Please Enter Name');
-  }
+
+
+
   }
 
   render() {
@@ -110,7 +133,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#007ACC',
     borderRadius: 15,
     marginTop: 40,
-    color:'#ffffff'
+    color: '#ffffff'
   },
 
 });
