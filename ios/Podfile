@@ -39,6 +39,9 @@ target 'AwesomeProject' do
   pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'
 
   pod 'react-native-maps', :path => '../node_modules/react-native-maps'
+  pod 'react-native-google-maps', path: rn_maps_path  # Uncomment this line if you want to support GoogleMaps on iOS
+  pod 'GoogleMaps'  # Uncomment this line if you want to support GoogleMaps on iOS
+  pod 'Google-Maps-iOS-Utils' # Uncomment this line if you want to support GoogleMaps on iOS
 
   target 'AwesomeProjectTests' do
     inherit! :search_paths
