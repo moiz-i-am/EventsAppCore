@@ -30,7 +30,7 @@ export default class Signup extends Component {
   // }
 
   validateEmail = (email) => {
-    var re = /.+@(gmail)\.com$/;
+    var re = /.+@(mit)\.edu$/;
     return re.test(email);
   };
 
