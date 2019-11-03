@@ -48,7 +48,7 @@ export default class Signup extends Component {
 
 
   submit() {
-   
+   if(this.state.password === this.state.newpassword){
     if (this.state.email != '') {
       //Check for the Name TextInput
       if (this.state.password != '') {
@@ -71,6 +71,9 @@ export default class Signup extends Component {
     } else {
       alert('Please Enter Name');
     }
+  }else{
+    alert('password confirmation is wrong');
+  }
 
 
 
